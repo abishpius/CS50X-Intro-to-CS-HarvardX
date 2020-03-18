@@ -1,0 +1,50 @@
+#include <cs50.h>
+#include <stdio.h>
+#include <math.h>
+
+float get_positive_float(string prompt);
+
+int main(void)
+{
+    float i = get_positive_float("Cash Money: ");
+    printf("%f\n", i);
+    int coins = round(i*100);
+    
+    int count = 0;
+
+    while(coins>0) {
+        // Use Quarters
+        while(coins>=25){
+            count++;
+            coins = coins - 25;
+        }
+        // Use Dimes
+        while(coins >=10){
+            count++;
+            coins = coins - 10;
+        }
+        // Use Nickels
+        while(coins >=5){
+            count++;
+            coins = coins - 5;
+        }
+        // Use Pennys
+        while(coins >=1){
+            count++;
+            coins = coins -1;
+        }
+    }
+    printf("%d", count); 
+}
+
+// Prompt user for positive integer
+float get_positive_float(string prompt)
+{
+    float n;
+    do
+    {
+        n = get_float("%s", prompt);
+    }
+    while (n < 0);
+    return n;
+}
