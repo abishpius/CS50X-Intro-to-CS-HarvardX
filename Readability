@@ -27,7 +27,6 @@ int main(void)
         j++;
     }
     
-   
    int sentence = 0;
    int k=0;
    while(s[k]!=0)
@@ -38,7 +37,6 @@ int main(void)
        }
        k++;
    }
-    
     
     float index = .0588*(letter*100)/word - .296*(sentence*100)/word - 15.8;
     int grade = round(index); 
