@@ -1,0 +1,69 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <cs50.h>
+#include <stdint.h>
+#include <string.h>
+
+int main(int argc, char *argv[])
+{
+    // Handle negative cases
+if (argc != 2)
+    {
+        printf("Usage: %s image\n", argv[0]);
+    return 1;
+    }
+
+// Open File
+FILE* file = fopen(argv[1], "r");
+
+//Estabilsh save point
+FILE* save = NULL;
+
+// Handle negative (not needed)
+if (!file){
+    return 1;
+}
+
+// count if its jpg and count number of jpg
+int jpg = 0;
+int counter = 0;
+
+// dont use Malloc flaticus
+unsigned char bytes[512];
+
+ // read the file and use while loop to go through the entirety of card
+    fread(bytes, 512, 1, file);
+   while (fread(bytes, 512,1,file) > 0){
+       
+      // given by brain, id of jpg 
+    if( bytes[0] == 0xff && bytes[1] == 0xd8 && bytes[2] == 0xff && (bytes[3] & 0xf0) == 0xe0){
+        
+        if( jpg == 1){
+            
+            fclose(save);
+        }
+        
+        else{
+            jpg = 1;
+        }
+        
+        // 8 character name
+        char filename[8];
+        sprintf(filename, "%03d.jpg", counter);
+        save = fopen(filename, "a");
+        counter++;
+    }
+    
+    // finally write the file
+    if (jpg == 1){
+        
+        fwrite(&bytes, 512, 1, save);
+    }
+    
+}
+// close everything outside while loop
+fclose(file);
+fclose(save);
+
+return 0;
+}
