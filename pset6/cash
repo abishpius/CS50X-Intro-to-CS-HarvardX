@@ -1,0 +1,30 @@
+from cs50 import get_float
+
+def positive_float():
+    while True:
+        f = get_float("Money Owed: ")
+        if f > 0:
+            break
+    return f
+    
+n = positive_float()
+
+print(f"Change owed: {n}" )
+
+j = round(n*100)
+
+count = 0
+while j >= 25:
+    j = j-25
+    count += 1
+while j >= 10:
+    j = j-10
+    count += 1
+while j >= 5:
+    j = j-5
+    count+= 1
+while j >= 1:
+    j= j-1
+    count+=1
+
+print(count)
