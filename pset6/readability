@@ -1,0 +1,35 @@
+from cs50 import get_string
+
+s = get_string("Text: ")
+
+q = s.upper()
+
+letter = 0
+word = 1
+sentence = 0
+
+for i in range(len(q)):
+    if q[i].isalnum() == True:
+        letter += 1
+    elif q[i].isspace() == True:
+        word += 1
+    elif q[i] == '.':
+        sentence += 1
+    elif q[i] == '!':
+        sentence += 1
+    elif q[i] == '?':
+        sentence += 1
+    else:
+       pass
+
+index = .0588*(letter*100)/word - .296*(sentence*100)/word - 15.8
+grade = round(index,0)
+grade = int(grade)
+
+
+if grade < 1:
+    print("Before Grade 1")
+elif grade > 16:
+    print ("Grade 16+")
+else:
+    print(f"Grade {grade}")
