@@ -23,7 +23,6 @@ From the State/Territory chosen by the user in Part2, the user is able to select
 ### Part4: Top 5 States by Cases
 In the final section, we present the top five States with the most number of cummulative confirmed cases.
 
-
 #### Works Cited:
 Data Source: https://www.kaggle.com/sudalairajkumar/novel-corona-virus-2019-dataset?select=time_series_covid_19_confirmed_US.csv
 Packages used: <br>
@@ -32,3 +31,5 @@ Pandas (https://pandas.pydata.org/) <br>
 Streamlit (https://docs.streamlit.io/en/latest/) <br>
 Plotly (https://plotly.com/python/)
 
+#### Disclaimer:
+The web application will only be hosted from 6/10/20 - 6/13/20. Note, if you plan on hosting the application yourself you will need to generate an API Key on Mapbox (https://www.mapbox.com/) and you will need to update the filepaths in the script.
